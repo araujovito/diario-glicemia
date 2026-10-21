@@ -24,7 +24,7 @@ $$;
 
 -- ---- Ana cria o diário e convida -------------------------------------------------------------
 select pg_temp.como('00000000-0000-0000-0000-00000000000a');
-select lives_ok($$ select public.criar_diario('Miguel') $$, 'quem entra pode criar um diário');
+select lives_ok($$ select public.criar_diario('Pedro') $$, 'quem entra pode criar um diário');
 create temp table t_diario on commit drop as select id from public.diarios;
 grant select on t_diario to authenticated, anon;
 select is((select papel from public.membros where user_id = auth.uid()), 'dono', 'quem cria vira dono');
